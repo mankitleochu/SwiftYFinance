@@ -257,14 +257,17 @@ public class SwiftYFinance {
                 return
             }
 
-            for found in json["quotes"].array! {
-                result.append(YFNewsSearchResult(
-                                type: found["type"].string,
-                                uuid: found["uuid"].string,
-                                link: found["link"].string,
-                                title: found["title"].string,
-                                publisher: found["publisher"].string,
-                                providerPublishTime: found["providerPublishTime"].string)
+            for found in json["news"].array! {
+                result.append(
+                    YFNewsSearchResult(
+                        type: found["type"].string,
+                        uuid: found["uuid"].string,
+                        link: found["link"].string,
+                        title: found["title"].string,
+                        publisher: found["publisher"].string,
+                        providerPublishTime: found["providerPublishTime"].string,
+                        thumbnail: found["thumbnail"]["resolutions"].array![0]["url"].string
+                    )
                 )
             }
             callback(result, nil)

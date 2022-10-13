@@ -14,4 +14,5 @@ public struct YFNewsSearchResult {
     public var title: String?
     public var publisher: String?
     public var providerPublishTime: String?
+    public var thumbnail: String?
 }
