@@ -256,7 +256,7 @@ public class SwiftYFinance {
                 callback(nil, YFinanceResponseError(message: json["search"]["error"]["description"].string))
                 return
             }
-
+            
             for found in json["news"].array! {
                 result.append(
                     YFNewsSearchResult(
@@ -266,7 +266,7 @@ public class SwiftYFinance {
                         title: found["title"].string,
                         publisher: found["publisher"].string,
                         providerPublishTime: found["providerPublishTime"].string,
-                        thumbnail: found["thumbnail"]["resolutions"].array![0]["url"].string
+                        thumbnail: found["thumbnail"]["resolutions"].array?[0]["url"].string ?? ""
                     )
                 )
             }
